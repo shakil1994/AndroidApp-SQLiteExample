@@ -2,6 +2,7 @@ package com.example.shakil.sqlitedemoproject.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final int VERSION_NUMBER = 2;
     private static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+" ("+ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+NAME+" VARCHAR(255), "+AGE+" INTEGER, "+GENDER+" VARCHAR(15)); ";
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
+    private static final String SELECT_ALL = "SELECT * FROM " + TABLE_NAME;
 
     private Context context;
 
@@ -59,4 +61,11 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         long rowId = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
         return rowId;
     }
+
+    public Cursor displayAllData(){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(SELECT_ALL, null);
+        return cursor;
+    }
+
 }

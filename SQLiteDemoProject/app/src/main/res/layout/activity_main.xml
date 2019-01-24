@@ -79,4 +79,11 @@
         android:id="@+id/btnAddData"
         style="@style/Widget.AppCompat.Button.Colored"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show All Data"
+        android:id="@+id/btnShowAllData"
+        style="@style/Widget.AppCompat.Button.Colored"/>
+
 </LinearLayout>
