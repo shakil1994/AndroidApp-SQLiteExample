@@ -15,16 +15,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Id: "
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="Id: "/>
+            android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/edtId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:id="@+id/edtId"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -37,16 +37,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Name: "
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="Name: "/>
+            android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:id="@+id/edtName"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -59,16 +59,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Age: "
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="Age: "/>
+            android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/edtAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:id="@+id/edtAge"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -81,38 +81,38 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Gender: "
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="Gender: "/>
+            android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/edtGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:id="@+id/edtGender"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Data"
         android:id="@+id/btnAddData"
-        style="@style/Widget.AppCompat.Button.Colored"/>
-
-    <Button
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Show All Data"
+        android:text="Add Data" />
+
+    <Button
         android:id="@+id/btnShowAllData"
-        style="@style/Widget.AppCompat.Button.Colored"/>
-
-    <Button
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update Data"
+        android:text="Show All Data" />
+
+    <Button
         android:id="@+id/btnUpdateData"
-        style="@style/Widget.AppCompat.Button.Colored"/>
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Data" />
 
 </LinearLayout>

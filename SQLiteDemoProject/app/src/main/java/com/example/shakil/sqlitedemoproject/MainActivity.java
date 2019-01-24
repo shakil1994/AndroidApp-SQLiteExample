@@ -43,13 +43,12 @@ public class MainActivity extends AppCompatActivity {
                 String age = edtAge.getText().toString();
                 String gender = edtGender.getText().toString();
 
-                if (v.getId() == R.id.btnAddData){
+                if (v.getId() == R.id.btnAddData) {
                     long rowId = myDatabaseHelper.insertData(name, age, gender);
-                    if (rowId == -1){
+                    if (rowId == -1) {
                         Toast.makeText(MainActivity.this, "Unsuccessful", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        Toast.makeText(MainActivity.this, "Row "+rowId+" is successfully inserted", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "Row " + rowId + " is successfully inserted", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -58,15 +57,14 @@ public class MainActivity extends AppCompatActivity {
         btnShowAllData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (v.getId() == R.id.btnShowAllData){
+                if (v.getId() == R.id.btnShowAllData) {
                     Cursor cursor = myDatabaseHelper.displayAllData();
-                    if (cursor.getCount() == 0){
+                    if (cursor.getCount() == 0) {
                         showData("Error", "No data found.");
                         return;
-                    }
-                    else {
+                    } else {
                         StringBuffer stringBuffer = new StringBuffer();
-                        while (cursor.moveToNext()){
+                        while (cursor.moveToNext()) {
                             stringBuffer.append("ID : " + cursor.getString(0) + "\n");
                             stringBuffer.append("Name : " + cursor.getString(1) + "\n");
                             stringBuffer.append("Age : " + cursor.getString(2) + "\n");
@@ -81,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         btnUpdateData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (v.getId() == R.id.btnUpdateData){
+                if (v.getId() == R.id.btnUpdateData) {
                     String name = edtName.getText().toString();
                     String age = edtAge.getText().toString();
                     String gender = edtGender.getText().toString();
@@ -89,10 +87,9 @@ public class MainActivity extends AppCompatActivity {
 
                     Boolean isUpdated = myDatabaseHelper.updatData(id, name, age, gender);
 
-                    if (isUpdated == true){
+                    if (isUpdated == true) {
                         Toast.makeText(MainActivity.this, "Data is successfully Updated", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
+                    } else {
                         Toast.makeText(MainActivity.this, "Data is not updated", Toast.LENGTH_SHORT).show();
                     }
                 }

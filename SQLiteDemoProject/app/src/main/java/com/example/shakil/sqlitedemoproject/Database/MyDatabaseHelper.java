@@ -18,7 +18,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String AGE = "Age";
     private static final String GENDER = "Gender";
     private static final int VERSION_NUMBER = 2;
-    private static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+" ("+ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+NAME+" VARCHAR(255), "+AGE+" INTEGER, "+GENDER+" VARCHAR(15)); ";
+    private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " (" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + NAME + " VARCHAR(255), " + AGE + " INTEGER, " + GENDER + " VARCHAR(15)); ";
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     private static final String SELECT_ALL = "SELECT * FROM " + TABLE_NAME;
 
@@ -35,8 +35,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         try {
             Toast.makeText(context, "onCreate is called. ", Toast.LENGTH_LONG).show();
             db.execSQL(CREATE_TABLE);
-        } catch (Exception e){
-            Toast.makeText(context, "Exception : "+e, Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(context, "Exception : " + e, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -46,14 +46,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "onUpgrade is called. ", Toast.LENGTH_LONG).show();
             db.execSQL(DROP_TABLE);
             onCreate(db);
-        }
-        catch (Exception e){
-            Toast.makeText(context, "Exception : "+e, Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(context, "Exception : " + e, Toast.LENGTH_LONG).show();
         }
     }
 
     /*Insert Data*/
-    public long insertData(String name, String age, String gender){
+    public long insertData(String name, String age, String gender) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(NAME, name);
@@ -64,14 +63,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
     /*Show All Data*/
-    public Cursor displayAllData(){
+    public Cursor displayAllData() {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(SELECT_ALL, null);
         return cursor;
     }
 
     /*Update Data*/
-    public boolean updatData(String id, String name, String age, String gender){
+    public boolean updatData(String id, String name, String age, String gender) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ID, id);
