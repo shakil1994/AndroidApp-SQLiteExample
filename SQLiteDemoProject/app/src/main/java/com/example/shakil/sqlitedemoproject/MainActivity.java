@@ -14,8 +14,8 @@ import com.example.shakil.sqlitedemoproject.Database.MyDatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText edtName, edtAge, edtGender;
-    private Button btnAddData, btnShowAllData;
+    private EditText edtName, edtAge, edtGender, edtId;
+    private Button btnAddData, btnShowAllData, btnUpdateData;
 
     MyDatabaseHelper myDatabaseHelper;
 
@@ -27,12 +27,14 @@ public class MainActivity extends AppCompatActivity {
         myDatabaseHelper = new MyDatabaseHelper(this);
         SQLiteDatabase sqLiteDatabase = myDatabaseHelper.getWritableDatabase();
 
+        edtId = findViewById(R.id.edtId);
         edtName = findViewById(R.id.edtName);
         edtAge = findViewById(R.id.edtAge);
         edtGender = findViewById(R.id.edtGender);
 
         btnAddData = findViewById(R.id.btnAddData);
         btnShowAllData = findViewById(R.id.btnShowAllData);
+        btnUpdateData = findViewById(R.id.btnUpdateData);
 
         btnAddData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +73,27 @@ public class MainActivity extends AppCompatActivity {
                             stringBuffer.append("Gender : " + cursor.getString(3) + "\n\n");
                         }
                         showData("ResultSet", stringBuffer.toString());
+                    }
+                }
+            }
+        });
+
+        btnUpdateData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v.getId() == R.id.btnUpdateData){
+                    String name = edtName.getText().toString();
+                    String age = edtAge.getText().toString();
+                    String gender = edtGender.getText().toString();
+                    String id = edtId.getText().toString();
+
+                    Boolean isUpdated = myDatabaseHelper.updatData(id, name, age, gender);
+
+                    if (isUpdated == true){
+                        Toast.makeText(MainActivity.this, "Data is successfully Updated", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Toast.makeText(MainActivity.this, "Data is not updated", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

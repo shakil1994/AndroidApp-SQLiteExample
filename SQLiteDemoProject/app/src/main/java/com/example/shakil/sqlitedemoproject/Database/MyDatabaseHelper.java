@@ -52,6 +52,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    /*Insert Data*/
     public long insertData(String name, String age, String gender){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -67,6 +68,19 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(SELECT_ALL, null);
         return cursor;
+    }
+
+    /*Update Data*/
+    public boolean updatData(String id, String name, String age, String gender){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ID, id);
+        contentValues.put(NAME, name);
+        contentValues.put(AGE, age);
+        contentValues.put(GENDER, gender);
+
+        sqLiteDatabase.update(TABLE_NAME, contentValues, ID + " = ?", new String[]{id});
+        return true;
     }
 
 }
