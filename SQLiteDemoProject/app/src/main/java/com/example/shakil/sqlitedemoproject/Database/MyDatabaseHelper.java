@@ -7,8 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
-import java.util.jar.Attributes;
-
 public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Student.db";
@@ -70,7 +68,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
     /*Update Data*/
-    public boolean updatData(String id, String name, String age, String gender) {
+    public boolean updateData(String id, String name, String age, String gender) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ID, id);
@@ -80,6 +78,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.update(TABLE_NAME, contentValues, ID + " = ?", new String[]{id});
         return true;
+    }
+
+    /*Delete Data*/
+    public int deleteData(String id){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        return sqLiteDatabase.delete(TABLE_NAME, ID + " = ?", new String[]{id});
     }
 
 }

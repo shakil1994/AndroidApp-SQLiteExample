@@ -15,7 +15,7 @@ import com.example.shakil.sqlitedemoproject.Database.MyDatabaseHelper;
 public class MainActivity extends AppCompatActivity {
 
     private EditText edtName, edtAge, edtGender, edtId;
-    private Button btnAddData, btnShowAllData, btnUpdateData;
+    private Button btnAddData, btnShowAllData, btnUpdateData, btnDeleteData;
 
     MyDatabaseHelper myDatabaseHelper;
 
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         btnAddData = findViewById(R.id.btnAddData);
         btnShowAllData = findViewById(R.id.btnShowAllData);
         btnUpdateData = findViewById(R.id.btnUpdateData);
+        btnDeleteData = findViewById(R.id.btnDeleteData);
 
         btnAddData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,12 +86,27 @@ public class MainActivity extends AppCompatActivity {
                     String gender = edtGender.getText().toString();
                     String id = edtId.getText().toString();
 
-                    Boolean isUpdated = myDatabaseHelper.updatData(id, name, age, gender);
+                    Boolean isUpdated = myDatabaseHelper.updateData(id, name, age, gender);
 
                     if (isUpdated == true) {
-                        Toast.makeText(MainActivity.this, "Data is successfully Updated", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Data is successfully Updated", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(MainActivity.this, "Data is not updated", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Data is not updated", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        });
+
+        btnDeleteData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v.getId() == R.id.btnDeleteData){
+                    String id = edtId.getText().toString();
+                    int value = myDatabaseHelper.deleteData(id);
+                    if (value > 0){
+                        Toast.makeText(MainActivity.this, "Data is successfully Deleted", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "Data is not deleted", Toast.LENGTH_LONG).show();
                     }
                 }
             }
