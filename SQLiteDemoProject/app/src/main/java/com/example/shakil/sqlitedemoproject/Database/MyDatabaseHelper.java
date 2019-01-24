@@ -62,6 +62,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return rowId;
     }
 
+    /*Show All Data*/
     public Cursor displayAllData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(SELECT_ALL, null);
